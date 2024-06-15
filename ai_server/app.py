@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import tensorflow as tf
 from model import custom_load_model, get_labels
 from image_processing import verify_image, preprocess_image
 from predictions import filtered_predictions

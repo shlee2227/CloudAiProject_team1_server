@@ -30,7 +30,7 @@ def preprocess_input_lambda(x):
 def custom_load_model():
     tf.keras.utils.register_keras_serializable()(CustomDataAugmentation)
     # 모델 불러오기 
-    model_path = "ai_server/dog_breed_model/model_tf2150_epoch200.keras"
+    model_path = "/Users/leeshinhee/Documents/newdeal/project/Code/server/ai_server/dog_breed_model/model_13breed_tf2150_epoch200_adam_default.keras"
     model = tf.keras.models.load_model(model_path, custom_objects={
         'preprocess_input_lambda': preprocess_input_lambda,
         'CustomDataAugmentation': CustomDataAugmentation,
