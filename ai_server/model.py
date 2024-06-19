@@ -2,6 +2,16 @@ import csv
 import tensorflow as tf
 from tensorflow.keras.applications.vgg16 import preprocess_input
 
+
+models = [{"model_path":"ai_server/dog_breed_model/model_tf2150_epoch200.keras", 
+           "label_path":"ai_server/dog_breed_model/labels.csv"},
+          {"model_path":"ai_server/dog_breed_model/model_13breed_tf2150_epoch200_adam_default.keras", 
+           "label_path":"ai_server/dog_breed_model/labels.csv"},
+          {"model_path":"ai_server/dog_breed_model/model_full_dataset_240618_1919_E100.keras", 
+           "label_path":"ai_server/dog_breed_model/labels2.csv"}]
+model_info = models[2]
+
+
 # 커스텀 layer CustomDataAugmentation 정의
 class CustomDataAugmentation(tf.keras.layers.Layer):
     def __init__(self, **kwargs):
@@ -30,7 +40,7 @@ def preprocess_input_lambda(x):
 def custom_load_model():
     tf.keras.utils.register_keras_serializable()(CustomDataAugmentation)
     # 모델 불러오기 
-    model_path = "/Users/leeshinhee/Documents/newdeal/project/Code/server/ai_server/dog_breed_model/model_13breed_tf2150_epoch200_adam_default.keras"
+    model_path = model_info["model_path"]
     model = tf.keras.models.load_model(model_path, custom_objects={
         'preprocess_input_lambda': preprocess_input_lambda,
         'CustomDataAugmentation': CustomDataAugmentation,
@@ -43,7 +53,7 @@ def custom_load_model():
 
 # Load labels
 def get_labels():
-    labels_path = "ai_server/dog_breed_model/labels.csv"
+    labels_path = model_info["label_path"]
     with open(labels_path, mode='r', encoding='UTF-8') as f:
         csv_reader = csv.reader(f)
         labels = {int(item[0]): item[1].strip() for item in csv_reader}

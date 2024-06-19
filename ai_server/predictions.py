@@ -1,9 +1,9 @@
 from model import get_labels
 
 labels = get_labels()
-threshold = 0.01
 
-def filtered_predictions(predictions):
+
+def filtered_predictions(predictions, threshold = 0.01):
     predictions = predictions[0].tolist() 
     formated_predictions = [{"id": id, "score": float(score)} for id, score in enumerate(predictions)]
     filtered_predictions = [pred for pred in formated_predictions if pred["score"] >= threshold]

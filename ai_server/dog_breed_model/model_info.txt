@@ -1,0 +1,36 @@
+---------------------------------------------------
+
+Order: 1
+File Name: model_tf2150_epoch200.keras
+Dataset: 5 dog breeds from 70 dog breed dataset
+Class Number: 5
+Epoch: 200
+Batch Size: 16
+Optimizer and Learning Rate: Adam, Initail LR 0.0001
+Model Summary: 
+
+---------------------------------------------------
+
+Order: 2
+File Name: model_13breed_tf2150_epoch200_adam_default.keras 
+Dataset: 13 dog breeds from 70 dog breed dataset + scrapping 
+Class Number: 13
+Epoch: 200
+Batch Size: 
+Optimizer and Learning Rate: Adam(default)
+Model Summary: 
+
+---------------------------------------------------
+
+Order: 3
+File Name: model_full_dataset_240618_1919_E100.keras
+Dataset: full dataset 
+          scrapping +13 dog breeds from 70 dog breed dataset 각 500~1000장 정도
+Class Number: 13
+Epoch: 100
+Batch Size: 32
+Optimizer and Learning Rate: Adam, LR control
+Model Summary: 
+---------------------------------------------------
+
+
